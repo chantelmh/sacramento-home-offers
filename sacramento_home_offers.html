@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sacramento Home Offers</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #5170fd;
+    --blue-dark: #3452e0;
+    --blue-light: #eef0ff;
+    --gold: #F5C518;
+    --gold-dark: #d4a800;
+    --white: #ffffff;
+    --off-white: #f8f8f6;
+    --dark: #111111;
+    --gray: #6b6b6b;
+    --border: #e8e8e8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--dark); background: var(--white); }
+
+  /* NAV */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px; background: var(--white);
+    border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-icon {
+    width: 40px; height: 40px; background: var(--blue); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-icon svg { width: 22px; height: 22px; }
+  .logo-text { line-height: 1.15; }
+  .logo-text strong { display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark); }
+  .logo-text span { font-size: 11px; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); }
+  nav a.cta-nav {
+    background: var(--gold); color: var(--dark); font-size: 13px; font-weight: 600;
+    padding: 10px 22px; border-radius: 4px; text-decoration: none; letter-spacing: 0.02em;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--blue); padding: 80px 48px 72px;
+    display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center;
+    min-height: 560px;
+  }
+  .hero-left {}
+  .hero-tag {
+    display: inline-block; background: rgba(255,255,255,0.15); color: #fff;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 2px; margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif; font-size: 52px; font-weight: 400;
+    color: var(--white); line-height: 1.15; margin-bottom: 20px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero-sub { font-size: 17px; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 36px; max-width: 480px; font-weight: 300; }
+  .hero-bullets { display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
+  .hero-bullet { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.9); font-size: 15px; }
+  .bullet-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+  .hero-phone { color: rgba(255,255,255,0.7); font-size: 14px; margin-top: 16px; }
+  .hero-phone a { color: var(--gold); text-decoration: none; font-weight: 500; }
+
+  /* HERO FORM CARD */
+  .hero-form {
+    background: var(--white); border-radius: 8px; padding: 32px 28px;
+  }
+  .form-title { font-size: 17px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+  .form-sub { font-size: 13px; color: var(--gray); margin-bottom: 22px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--gray); margin-bottom: 5px; }
+  .field input, .field select {
+    width: 100%; padding: 11px 14px; border: 1.5px solid var(--border);
+    border-radius: 4px; font-size: 14px; font-family: 'DM Sans', sans-serif;
+    color: var(--dark); background: var(--white); transition: border-color 0.2s;
+  }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--blue); }
+  .submit-btn {
+    width: 100%; background: var(--gold); color: var(--dark); border: none;
+    border-radius: 4px; padding: 14px; font-size: 15px; font-weight: 700;
+    font-family: 'DM Sans', sans-serif; cursor: pointer; letter-spacing: 0.01em;
+    margin-top: 4px; transition: background 0.2s;
+  }
+  .submit-btn:hover { background: var(--gold-dark); }
+  .form-privacy { font-size: 11px; color: #aaa; text-align: center; margin-top: 10px; line-height: 1.5; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--off-white); border-bottom: 1px solid var(--border);
+    display: flex; justify-content: center; gap: 0;
+  }
+  .trust-item {
+    flex: 1; max-width: 260px; text-align: center; padding: 28px 20px;
+    border-right: 1px solid var(--border);
+  }
+  .trust-item:last-child { border-right: none; }
+  .trust-num { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--blue); line-height: 1; }
+  .trust-label { font-size: 13px; color: var(--gray); margin-top: 4px; }
+
+  /* SECTION COMMON */
+  .section { padding: 72px 48px; }
+  .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 10px; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 36px; font-weight: 400; color: var(--dark); margin-bottom: 10px; line-height: 1.2; }
+  .section-sub { font-size: 16px; color: var(--gray); max-width: 540px; line-height: 1.65; margin-bottom: 40px; font-weight: 300; }
+
+  /* TWO OPTIONS */
+  .options-section { background: var(--white); }
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 860px; }
+  .opt-card {
+    border: 1.5px solid var(--border); border-radius: 6px; padding: 28px;
+  }
+  .opt-card.featured { border-color: var(--blue); background: var(--blue-light); }
+  .opt-badge {
+    display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; padding: 4px 10px; border-radius: 2px; margin-bottom: 14px;
+  }
+  .badge-cash { background: var(--gold); color: var(--dark); }
+  .badge-top { background: var(--blue); color: var(--white); }
+  .opt-card h3 { font-size: 19px; font-weight: 600; color: var(--dark); margin-bottom: 10px; }
+  .opt-card p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+  /* HOW IT WORKS */
+  .how-section { background: var(--off-white); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 860px; }
+  .step-num {
+    font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--blue);
+    opacity: 0.25; line-height: 1; margin-bottom: 8px;
+  }
+  .step h4 { font-size: 16px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+  .step p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+  /* WHO WE HELP */
+  .who-section { background: var(--blue); }
+  .who-section .section-label { color: var(--gold); }
+  .who-section .section-title { color: var(--white); }
+  .who-section .section-sub { color: rgba(255,255,255,0.7); }
+  .who-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 860px; }
+  .who-item {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px; padding: 16px 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .who-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+  .who-item span { font-size: 13px; color: rgba(255,255,255,0.9); font-weight: 400; }
+
+  /* TESTIMONIAL */
+  .testi-section { background: var(--white); padding: 72px 48px; }
+  .testi-card {
+    max-width: 640px; border-left: 4px solid var(--gold);
+    padding: 28px 32px; background: var(--off-white); border-radius: 0 6px 6px 0;
+  }
+  .testi-quote { font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 400; color: var(--dark); line-height: 1.55; margin-bottom: 18px; }
+  .testi-who { font-size: 13px; color: var(--gray); }
+  .testi-who strong { color: var(--dark); }
+
+  /* BOTTOM CTA */
+  .cta-section { background: var(--gold); padding: 64px 48px; text-align: center; }
+  .cta-section h2 { font-family: 'DM Serif Display', serif; font-size: 38px; color: var(--dark); margin-bottom: 12px; }
+  .cta-section p { font-size: 16px; color: rgba(0,0,0,0.65); margin-bottom: 28px; font-weight: 300; }
+  .cta-btn {
+    display: inline-block; background: var(--blue); color: var(--white);
+    font-size: 16px; font-weight: 600; padding: 16px 40px; border-radius: 4px;
+    text-decoration: none; letter-spacing: 0.02em;
+  }
+  .cta-phone { margin-top: 16px; font-size: 14px; color: rgba(0,0,0,0.55); }
+  .cta-phone a { color: var(--dark); font-weight: 600; text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark); padding: 28px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo-icon { width: 28px; height: 28px; background: var(--blue); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .hero { grid-template-columns: 1fr; padding: 48px 20px; gap: 32px; }
+    .hero h1 { font-size: 36px; }
+    .section { padding: 48px 20px; }
+    .options-grid, .steps, .who-grid { grid-template-columns: 1fr; }
+    .trust-bar { flex-wrap: wrap; }
+    .trust-item { border-right: none; border-bottom: 1px solid var(--border); }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 17L17 7M17 7H9M17 7V15" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <strong>Sacramento</strong>
+      <span>Home Offers</span>
+    </div>
+  </a>
+  <a href="#form" class="cta-nav">Get My Free Offer</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Sacramento's Local Home Buyer</div>
+    <h1>Sell your home fast — <em>no repairs,</em> no fees, no stress</h1>
+    <p class="hero-sub">Get a fair cash offer or let us list it for top dollar. You choose what works best for your situation.</p>
+    <div class="hero-bullets">
+      <div class="hero-bullet"><span class="bullet-dot"></span>Close in as little as 7 days</div>
+      <div class="hero-bullet"><span class="bullet-dot"></span>Sell completely as-is — zero repairs needed</div>
+      <div class="hero-bullet"><span class="bullet-dot"></span>No commissions, no agent fees, no surprises</div>
+      <div class="hero-bullet"><span class="bullet-dot"></span>Local Sacramento buyer — not a call center</div>
+    </div>
+    <p class="hero-phone">Questions? Call or text: <a href="tel:9165550100">(916) 555-0100</a></p>
+  </div>
+
+  <div class="hero-form" id="form">
+    <p class="form-title">Get your free offer today</p>
+    <p class="form-sub">No obligation. Hear back within 1 hour.</p>
+    <div class="field">
+      <label>Property address</label>
+      <input type="text" placeholder="123 Main St, Sacramento, CA" />
+    </div>
+    <div class="field">
+      <label>Your name</label>
+      <input type="text" placeholder="Jane Smith" />
+    </div>
+    <div class="field">
+      <label>Phone number</label>
+      <input type="tel" placeholder="(916) 555-0100" />
+    </div>
+    <div class="field">
+      <label>Your situation</label>
+      <select>
+        <option value="">Select one...</option>
+        <option>House needs repairs / selling as-is</option>
+        <option>Inherited property</option>
+        <option>Behind on payments / foreclosure</option>
+        <option>Need to relocate fast</option>
+        <option>Tired landlord</option>
+        <option>Going through divorce</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <button class="submit-btn">Get My Free Offer Now →</button>
+    <p class="form-privacy">Your info stays private. A local buyer will contact you — not a national company.</p>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-num">7</div>
+    <div class="trust-label">days to close if needed</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">$0</div>
+    <div class="trust-label">repairs or cleaning required</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">$0</div>
+    <div class="trust-label">commissions or agent fees</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">2</div>
+    <div class="trust-label">options — you decide which fits</div>
+  </div>
+</div>
+
+<!-- TWO OPTIONS -->
+<section class="section options-section">
+  <div class="section-label">How we work</div>
+  <div class="section-title">Two ways to sell — you pick</div>
+  <p class="section-sub">Unlike most buyers, we give you options based on what matters most to you — speed or maximum price.</p>
+  <div class="options-grid">
+    <div class="opt-card">
+      <span class="opt-badge badge-cash">Fast cash offer</span>
+      <h3>Close in 7–14 days</h3>
+      <p>We buy your home as-is for cash. No repairs, no showings, no waiting. Walk away with cash on your timeline — even if the house needs major work.</p>
+    </div>
+    <div class="opt-card featured">
+      <span class="opt-badge badge-top">Top dollar listing</span>
+      <h3>Net more at closing</h3>
+      <p>We cover the cost of repairs and list your home on the MLS. You pay nothing upfront and walk away with significantly more money at closing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-section">
+  <div class="section-label">The process</div>
+  <div class="section-title">Three simple steps</div>
+  <p class="section-sub">No pressure, no obligation. We make it easy from start to finish.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h4>Tell us about your home</h4>
+      <p>Fill out the short form above. Takes less than 60 seconds. No credit check, no commitment required.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>We reach out within 1 hour</h4>
+      <p>A local Sacramento buyer contacts you directly to learn about your situation and walk you through both options.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>You choose what fits</h4>
+      <p>Cash offer or top-dollar listing — we walk you through both so you can decide with complete confidence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE HELP -->
+<section class="section who-section">
+  <div class="section-label">Who we help</div>
+  <div class="section-title">We work with homeowners in all situations</div>
+  <p class="section-sub">No judgment. No pressure. Just honest options for whatever you're going through.</p>
+  <div class="who-grid">
+    <div class="who-item"><span class="who-dot"></span><span>House needs repairs</span></div>
+    <div class="who-item"><span class="who-dot"></span><span>Inherited property</span></div>
+    <div class="who-item"><span class="who-dot"></span><span>Behind on payments</span></div>
+    <div class="who-item"><span class="who-dot"></span><span>Facing foreclosure</span></div>
+    <div class="who-item"><span class="who-dot"></span><span>Tired landlord</span></div>
+    <div class="who-item"><span class="who-dot"></span><span>Relocating fast</span></div>
+    <div class="who-item"><span class="who-dot"></span><span>Going through divorce</span></div>
+    <div class="who-item"><span class="who-dot"></span><span>Want a simple sale</span></div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testi-section">
+  <div class="section-label">What sellers say</div>
+  <div class="section-title" style="margin-bottom:28px;">Real results from Sacramento homeowners</div>
+  <div class="testi-card">
+    <p class="testi-quote">"I didn't think I had options with my house in the condition it was in. They showed me two different ways to sell and helped me figure out which made more sense for my situation. Closed in 12 days with zero stress."</p>
+    <p class="testi-who"><strong>Sacramento homeowner</strong> — sold in Elk Grove, CA</p>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="cta-section">
+  <h2>Ready to get your free offer?</h2>
+  <p>No obligation. No pressure. Just honest options for your home.</p>
+  <a href="#form" class="cta-btn">Get My Free Offer Now</a>
+  <p class="cta-phone">Or call / text us directly: <a href="tel:9165550100">(916) 555-0100</a></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M7 17L17 7M17 7H9M17 7V15" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <p style="color:rgba(255,255,255,0.6);font-size:13px;">Sacramento Home Offers</p>
+  </div>
+  <p>Sacramento, CA &nbsp;·&nbsp; (916) 555-0100<br>We are not a real estate brokerage. We are local home buyers.</p>
+</footer>
+
+</body>
+</html>
