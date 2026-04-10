@@ -226,9 +226,62 @@
   <div class="hero-form" id="form">
     <p class="form-title">Get your free offer today</p>
     <p class="form-sub">No obligation. Hear back within 1 hour.</p>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf2vbtg_wk4VBWfAeXnVmrR2gSbM9DqFtqdXq0qTMYvWWuBqA/viewform?embedded=true" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0" style="border-radius:4px;">Loading…</iframe>
-    <p class="form-privacy">Your info stays private. A local buyer will contact you — not a national company.</p>
+    <div id="form-fields">
+      <div class="field">
+        <label>Property address</label>
+        <input type="text" id="f-address" placeholder="123 Main St, Sacramento, CA" />
+      </div>
+      <div class="field">
+        <label>Your name</label>
+        <input type="text" id="f-name" placeholder="Jane Smith" />
+      </div>
+      <div class="field">
+        <label>Phone number</label>
+        <input type="tel" id="f-phone" placeholder="(916) 555-0100" />
+      </div>
+      <div class="field">
+        <label>Your situation</label>
+        <select id="f-situation">
+          <option value="">Select one...</option>
+          <option>House needs repairs / selling as-is</option>
+          <option>Inherited property</option>
+          <option>Behind on payments / foreclosure</option>
+          <option>Need to relocate fast</option>
+          <option>Tired landlord</option>
+          <option>Going through divorce</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <button class="submit-btn" onclick="submitForm()">Get My Free Offer Now →</button>
+      <p class="form-privacy">Your info stays private. A local buyer will contact you — not a national company.</p>
+    </div>
+    <div id="form-success" style="display:none; text-align:center; padding:24px 0;">
+      <div style="font-size:40px; margin-bottom:12px;">✓</div>
+      <p style="font-size:17px; font-weight:600; color:#111; margin-bottom:8px;">We got your info!</p>
+      <p style="font-size:14px; color:#6b6b6b; line-height:1.6;">A local Sacramento buyer will reach out within 1 hour. No pressure, just honest options.</p>
+    </div>
   </div>
+  <script>
+  function submitForm() {
+    var address = document.getElementById('f-address').value;
+    var name = document.getElementById('f-name').value;
+    var phone = document.getElementById('f-phone').value;
+    var situation = document.getElementById('f-situation').value;
+    if (!address || !name || !phone) {
+      alert('Please fill in your address, name, and phone number.');
+      return;
+    }
+    var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf2vbtg_wk4VBWfAeXnVmrR2gSbM9DqFtqdXq0qTMYvWWuBqA/formResponse';
+    var data = new FormData();
+    data.append('entry.1685357447', address);
+    data.append('entry.1885126967', name);
+    data.append('entry.45060656', phone);
+    data.append('entry.1272735447', situation);
+    fetch(formUrl, { method: 'POST', body: data, mode: 'no-cors' });
+    document.getElementById('form-fields').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+  </script>
 </section>
 
 <!-- TRUST BAR -->
