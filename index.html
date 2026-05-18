@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sacramento Home Offers</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1001029392375670');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1001029392375670&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <style>
   :root {
     --blue: #5170fd;
@@ -205,7 +222,7 @@
       <span>Home Offers</span>
     </div>
   </a>
-  <a href="https://forms.gle/nsGWNWL4tMzV81aX9" target="_blank" class="cta-nav">Get My Free Offer</a>
+  <a href="#form" class="cta-nav">Get My Free Offer</a>
 </nav>
 
 <!-- HERO -->
@@ -220,14 +237,39 @@
       <div class="hero-bullet"><span class="bullet-dot"></span>No commissions, no agent fees, no surprises</div>
       <div class="hero-bullet"><span class="bullet-dot"></span>Local Sacramento buyer — not a call center</div>
     </div>
-    <p class="hero-phone">Questions? Call or text: <a href="tel:9164266699">(916) 426-6699</a></p>
+    <p class="hero-phone">Questions? Call or text: <a href="tel:9165550100">(916) 555-0100</a></p>
   </div>
 
-  <div class="hero-form" id="form" style="text-align:center; padding: 48px 28px;">
-    <p class="form-title" style="font-size:22px; margin-bottom:12px;">Get your free offer today</p>
-    <p class="form-sub" style="font-size:15px; margin-bottom:32px;">No obligation. Hear back within 1 hour.<br>Takes less than 60 seconds.</p>
-    <a href="https://forms.gle/nsGWNWL4tMzV81aX9" target="_blank" class="submit-btn" style="display:block; text-decoration:none; font-size:18px; padding:18px;">Get My Free Offer Now →</a>
-    <p class="form-privacy" style="margin-top:16px;">Your info stays private. A local buyer will contact you — not a national company.</p>
+  <div class="hero-form" id="form">
+    <p class="form-title">Get your free offer today</p>
+    <p class="form-sub">No obligation. Hear back within 1 hour.</p>
+    <div class="field">
+      <label>Property address</label>
+      <input type="text" placeholder="123 Main St, Sacramento, CA" />
+    </div>
+    <div class="field">
+      <label>Your name</label>
+      <input type="text" placeholder="Jane Smith" />
+    </div>
+    <div class="field">
+      <label>Phone number</label>
+      <input type="tel" placeholder="(916) 555-0100" />
+    </div>
+    <div class="field">
+      <label>Your situation</label>
+      <select>
+        <option value="">Select one...</option>
+        <option>House needs repairs / selling as-is</option>
+        <option>Inherited property</option>
+        <option>Behind on payments / foreclosure</option>
+        <option>Need to relocate fast</option>
+        <option>Tired landlord</option>
+        <option>Going through divorce</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <button class="submit-btn">Get My Free Offer Now →</button>
+    <p class="form-privacy">Your info stays private. A local buyer will contact you — not a national company.</p>
   </div>
 </section>
 
@@ -259,7 +301,7 @@
   <div class="options-grid">
     <div class="opt-card">
       <span class="opt-badge badge-cash">Fast cash offer</span>
-      <h3>Close in 7–30 days</h3>
+      <h3>Close in 7–14 days</h3>
       <p>We buy your home as-is for cash. No repairs, no showings, no waiting. Walk away with cash on your timeline — even if the house needs major work.</p>
     </div>
     <div class="opt-card featured">
@@ -325,8 +367,8 @@
 <section class="cta-section">
   <h2>Ready to get your free offer?</h2>
   <p>No obligation. No pressure. Just honest options for your home.</p>
-  <a href="https://forms.gle/nsGWNWL4tMzV81aX9" target="_blank" class="cta-btn">Get My Free Offer Now</a>
-  <p class="cta-phone">Or call / text us directly: <a href="tel:9164266699">(916) 426-6699</a></p>
+  <a href="#form" class="cta-btn">Get My Free Offer Now</a>
+  <p class="cta-phone">Or call / text us directly: <a href="tel:9165550100">(916) 555-0100</a></p>
 </section>
 
 <!-- FOOTER -->
@@ -339,7 +381,7 @@
     </div>
     <p style="color:rgba(255,255,255,0.6);font-size:13px;">Sacramento Home Offers</p>
   </div>
-  <p>Sacramento, CA &nbsp;·&nbsp; (916) 426-6699<br>We are not a real estate brokerage. We are local home buyers.</p>
+  <p>Sacramento, CA &nbsp;·&nbsp; (916) 555-0100<br>We are not a real estate brokerage. We are local home buyers.</p>
 </footer>
 
 </body>
